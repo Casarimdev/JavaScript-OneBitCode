@@ -29,7 +29,7 @@ function Add(){
         const newPlayer = document.createElement('h3')
 
         newPlayer.innerText = `${NumberPlayer} ${NamePlayer} - ${PosicionPlayer}\n`
-        newPlayer.className = `${NumberPlayer}`
+        newPlayer.id = `${NumberPlayer}`
         TeamPlace.appendChild(newPlayer)
         
         
@@ -43,17 +43,15 @@ function Add(){
 }
 
 function Remove(){
-    const TeamPlace = document.getElementById("Team")
-    let inputPos = document.getElementById("inputPos")
-    var inputName = document.getElementById("inputName")
-    let inputNum = document.getElementById("inputNum")
-    let  inputRemoveNum = document.getElementById("inputRemoveNum")
-    let NamePlayer = inputName.value
-    let NumberPlayer = inputNum.value
-    let PosicionPlayer = inputPos.value
-    var listNumbers = []
 
-    let removePlayer = document.getElementsByClassName(`${NumberPlayer}`)
+    let numberRemove = document.getElementById("inputRemoveNum").value
+    let PlayerRemove = document.getElementById(numberRemove)
+    
+    let confirmation = confirm(`Deseja remover o jogador ${PlayerRemove.innerText}?`)
 
-    TeamPlace.removeChild(removePlayer)
+    if (confirmation){
+        document.getElementById("Team").removeChild(PlayerRemove)
+        document.getElementById("inputRemoveNum").value = ""
+        
+    }
 }
